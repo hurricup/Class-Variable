@@ -1,7 +1,10 @@
 Class-Variable
 ==============
 
-Perl implementation of class variables visibility limitation.
+Perl implementation of class variables with access restrictions.
+
+Actual documentation may be found on CPAN:
+http://search.cpan.org/~hurricup/Class-Variable/lib/Class/Variable.pm
 
 INSTALLATION
 ============

@@ -5,7 +5,7 @@ use 5.000000;
 use Carp;
 use Scalar::Util 'weaken';
 
-our $VERSION = '1.000000'; # <== update version in pod
+our $VERSION = '1.000'; # <== update version in pod
 
 our @EXPORT;
 
@@ -133,11 +133,11 @@ Class::Variable - Perl implementation of class variables with access restriction
 
 =head1 VERSION
 
-Version 1.000000
+Version 1.000
 
 =head1 SYNOPSIS
 
-You may create class members using intuitive syntax:
+This module allows You to create class members with access restrictions, using intuitive syntax:
 
     package Foo;
     use Class::Variable;
@@ -146,7 +146,7 @@ You may create class members using intuitive syntax:
     protected   'var3', 'var4';   # these variables available only in objects of Foo class or subclasses
     private     'var5', 'var6';   # these variables available only in objects of Foo class 
     
-    ... meanwhile somewhere else ...
+meanwhile somewhere else ...
     
     use Foo;
     
@@ -156,13 +156,21 @@ You may create class members using intuitive syntax:
     $foo->var3 = "Protected var content";   # croaks, protected
     $foo->var5 = "Private var content";     # croaks, private
     
-All generated class variables  
+All generated class variables are actually lvalue methods and can be inherited by subclasses.
     
 =head1 DESCRIPTION
 
+Module exports three methods, required to define variables: C<public>, C<protected> and C<private>.
+
+Internally, there is a namespace variable in C<Class::Variable> package, which is not available from the outside and contains all data per object, using weak references to avoid duplicated references (not sure if it's possible). 
+
+Generated class variables are lvalue subs with access control in them.
+
+Don't forget, that data from generated variables is not encapsulated in object and can't be serialized.
+
 =head1 BENCHMARKS
 
-Here is a comparision of direct acces to a hash elements and access to generated variables:
+Here is a comparision of direct acces to hash elements and access to generated variables:
 
     1. Direct write    :  1 wallclock secs ( 0.58 usr +  0.00 sys =  0.58 CPU) @ 17331022.53/s (n=10000000)
     2. Direct read     :  1 wallclock secs ( 0.56 usr +  0.00 sys =  0.56 CPU) @ 17793594.31/s (n=10000000)
@@ -189,7 +197,7 @@ This module is published under the terms of the MIT license, which basically mea
 
 =item * Main project repository and bugtracker: L<https://github.com/hurricup/Class-Variable>
 
-=item * See also: L<Class::Property>. 
+=item * See also: L<Class::Property>, L<Class::Accessor::Lazy>. 
 
 =back
 
