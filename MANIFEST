@@ -2,5 +2,9 @@ Changes
 Makefile.PL
 MANIFEST
 README
-t/Class-Visibility.t
-lib/Class/Visibility.pm
+TODO
+t/Class-Variable.t
+t/Foo.pm
+t/Bar.pm
+timethese/benchmark.pl
+lib/Class/Variable.pm

@@ -1,11 +1,11 @@
-package Class::Visibility;
+package Class::Variable;
 use strict; use warnings FATAL => 'all'; 
 use parent 'Exporter';
 use 5.000000;
 use Carp;
 use Scalar::Util 'weaken';
 
-our $VERSION = '1.000000';
+our $VERSION = '1.000000'; # <== update version in pod
 
 our @EXPORT;
 
@@ -129,18 +129,55 @@ sub get_private_variable($$)
 __END__
 =head1 NAME
 
-Class::Visibility - Perl implementation of class variables visibility limitation.
+Class::Variable - Perl implementation of class variables with access restrictions.
+
+=head1 VERSION
+
+Version 1.000000
 
 =head1 SYNOPSIS
 
-  use Class::Visibility;
+You may create class members using intuitive syntax:
 
+    package Foo;
+    use Class::Variable;
+    
+    public      'var1', 'var2';   # these variables available everywhere 
+    protected   'var3', 'var4';   # these variables available only in objects of Foo class or subclasses
+    private     'var5', 'var6';   # these variables available only in objects of Foo class 
+    
+    ... meanwhile somewhere else ...
+    
+    use Foo;
+    
+    my $foo = Foo->new();
+    
+    $foo->var1 = "Public var content";      # works fine
+    $foo->var3 = "Protected var content";   # croaks, protected
+    $foo->var5 = "Private var content";     # croaks, private
+    
+All generated class variables  
+    
 =head1 DESCRIPTION
 
+=head1 BENCHMARKS
 
+Here is a comparision of direct acces to a hash elements and access to generated variables:
+
+    1. Direct write    :  1 wallclock secs ( 0.58 usr +  0.00 sys =  0.58 CPU) @ 17331022.53/s (n=10000000)
+    2. Direct read     :  1 wallclock secs ( 0.56 usr +  0.00 sys =  0.56 CPU) @ 17793594.31/s (n=10000000)
+    3. Public write    : 11 wallclock secs (10.36 usr +  0.00 sys = 10.36 CPU) @ 965437.34/s (n=10000000)
+    4. Public read     : 10 wallclock secs (10.37 usr +  0.00 sys = 10.37 CPU) @ 963948.33/s (n=10000000)
+    5. Protected write : 15 wallclock secs (14.21 usr +  0.00 sys = 14.21 CPU) @ 703630.73/s (n=10000000)
+    6. Protected read  : 14 wallclock secs (14.13 usr +  0.00 sys = 14.13 CPU) @ 707513.80/s (n=10000000)
+    7. Private write   : 12 wallclock secs (11.31 usr +  0.00 sys = 11.31 CPU) @ 884173.30/s (n=10000000)
+    8. Private read    : 11 wallclock secs (11.23 usr +  0.00 sys = 11.23 CPU) @ 890313.39/s (n=10000000)
+
+We can see, that public variables works 18 times slower, than direct access, protected variables are 25 times slower, than direct acces and private variables are 20 times slower, than direct access.
+    
 =head1 BUGS AND IMPROVEMENTS
 
-If you found any bug and/or want to make some improvement, feel free to participate in the project on GitHub: L<https://github.com/hurricup/Class-Visibility>
+If you found any bug and/or want to make some improvement, feel free to participate in the project on GitHub: L<https://github.com/hurricup/Class-Variable>
 
 =head1 LICENSE
 
@@ -150,7 +187,7 @@ This module is published under the terms of the MIT license, which basically mea
 
 =over
 
-=item * Main project repository and bugtracker: L<https://github.com/hurricup/Class-Visibility>
+=item * Main project repository and bugtracker: L<https://github.com/hurricup/Class-Variable>
 
 =item * See also: L<Class::Property>. 
 

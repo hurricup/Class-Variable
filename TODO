@@ -1,0 +1,3 @@
+- Variables name validation
+- Test with large objects number
+- Do we need kinda GC ?

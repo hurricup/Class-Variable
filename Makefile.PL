@@ -1,10 +1,10 @@
 use 5.006;use strict;use warnings FATAL => 'all';use ExtUtils::MakeMaker;
 
 WriteMakefile(
-    NAME                => 'Class::Visibility',
+    NAME                => 'Class::Variable',
     AUTHOR              => 'Alexandr Evstigneev <hurricup@evstigneev.com>',
-    VERSION_FROM        => 'lib/Class/Visibility.pm', 
-    ABSTRACT_FROM       => 'lib/Class/Visibility.pm', 
+    VERSION_FROM        => 'lib/Class/Variable.pm', 
+    ABSTRACT_FROM       => 'lib/Class/Variable.pm', 
     MIN_PERL_VERSION    => 5.016,
     LICENSE             => 'MIT',
     CONFIGURE_REQUIRES => {
@@ -28,12 +28,12 @@ WriteMakefile(
                 'http://www.opensource.org/licenses/mit-license.php',
             ],
             'bugtracker' => {
-                'web' => 'https://github.com/hurricup/Class-Visibility/issues'
+                'web' => 'https://github.com/hurricup/Class-Variable/issues'
             },
             'repository' => {
                 'type' => 'git',
-                'url' => 'git://github.com/hurricup/Class-Visibility.git',
-                'web' => 'https://github.com/hurricup/Class-Visibility',
+                'url' => 'git://github.com/hurricup/Class-Variable.git',
+                'web' => 'https://github.com/hurricup/Class-Variable',
             },
         },
     },    

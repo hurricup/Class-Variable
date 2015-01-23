@@ -1,7 +1,7 @@
 package Bar;
 use strict;use warnings;
 use parent 'Foo';
-use Class::Visibility;
+use Class::Variable;
 
 public 'public2';
 protected 'protected2';
