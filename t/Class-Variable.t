@@ -2,7 +2,7 @@
 package main;
 use strict;use warnings;
 
-use Test::More;
+use Test::More tests => 27;
 BEGIN { use_ok('Class::Variable') };
 
 use_ok('Foo');
@@ -86,5 +86,3 @@ ok( $@ =~ /Access violation: private variable/, "Base class private variable rea
 
 eval{ $bar->set_private_foo_bar(); };
 ok( $@ =~ /Access violation: private variable/, "Base class private variable writing protection for subclass methods" );
-
-done_testing;

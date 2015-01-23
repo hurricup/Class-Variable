@@ -1,7 +1,7 @@
 package Class::Variable;
 use strict; use warnings FATAL => 'all'; 
 use parent 'Exporter';
-use 5.000000;
+use 5.008;
 use Carp;
 use Scalar::Util 'weaken';
 

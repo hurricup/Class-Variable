@@ -1,11 +1,11 @@
-use 5.006;use strict;use warnings FATAL => 'all';use ExtUtils::MakeMaker;
+use 5.008;use strict;use warnings FATAL => 'all';use ExtUtils::MakeMaker;
 
 WriteMakefile(
     NAME                => 'Class::Variable',
     AUTHOR              => 'Alexandr Evstigneev <hurricup@evstigneev.com>',
     VERSION_FROM        => 'lib/Class/Variable.pm', 
     ABSTRACT_FROM       => 'lib/Class/Variable.pm', 
-    MIN_PERL_VERSION    => 5.016,
+    MIN_PERL_VERSION    => 5.008,
     LICENSE             => 'MIT',
     CONFIGURE_REQUIRES => {
         'ExtUtils::MakeMaker' => 0,
@@ -15,9 +15,10 @@ WriteMakefile(
         'Test::More' => 0,
     },
     PREREQ_PM => {
-		'Carp' => 0,
-		'Exporter' => 0,
-		'parent' => 0,
+        'Carp' => 0,
+        'Exporter' => 0,
+        'parent' => 0,
+        'Scalar::Util' => 0,
     }, 
     META_MERGE        => {
         'meta-spec' => { 
