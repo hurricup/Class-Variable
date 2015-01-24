@@ -5,6 +5,9 @@ Perl implementation of class variables with access restrictions.
 
     Documentation on CPAN:
         http://search.cpan.org/~hurricup/Class-Variable/lib/Class/Variable.pm
+        
+    Documentation on MetaCPAN
+        https://metacpan.org/pod/Class::Variable
 
     Testing results
         http://www.cpantesters.org/distro/C/Class-Variable.html
