@@ -3,8 +3,17 @@ Class-Variable
 
 Perl implementation of class variables with access restrictions.
 
-Actual documentation may be found on CPAN:
-http://search.cpan.org/~hurricup/Class-Variable/lib/Class/Variable.pm
+    Documentation on CPAN:
+        http://search.cpan.org/~hurricup/Class-Variable/lib/Class/Variable.pm
+
+    Testing results
+        http://www.cpantesters.org/distro/C/Class-Variable.html
+        
+    AnnoCPAN, Annotated CPAN documentation
+        http://annocpan.org/dist/Class-Variable
+
+    CPAN Ratings
+        http://cpanratings.perl.org/d/Class-Variable
 
 INSTALLATION
 ============
