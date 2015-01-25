@@ -184,21 +184,15 @@ Here is a comparision of direct acces to hash elements and access to generated v
 
 We can see, that public variables works 18 times slower, than direct access, protected variables are 25 times slower, than direct acces and private variables are 20 times slower, than direct access.
     
-=head1 BUGS AND IMPROVEMENTS
-
-If you found any bug and/or want to make some improvement, feel free to participate in the project on GitHub: L<https://github.com/hurricup/Class-Variable>
-
-=head1 LICENSE
-
-This module is published under the terms of the MIT license, which basically means "Do with it whatever you want". For more information, see the LICENSE file that should be enclosed with this distributions. A copy of the license is (at the time of writing) also available at L<http://www.opensource.org/licenses/mit-license.php>.
-
 =head1 SEE ALSO
 
 =over
 
 =item * Main project repository and bugtracker: L<https://github.com/hurricup/Class-Variable>
 
-=item * Testing results: L<http://www.cpantesters.org/distro/C/Class-Variable.html>
+=item * CPAN Testers reports: L<http://www.cpantesters.org/distro/C/Class-Variable.html>
+
+=item * Testers matrix: L<http://matrix.cpantesters.org/?dist=Class-Variable>
         
 =item * AnnoCPAN, Annotated CPAN documentation: L<http://annocpan.org/dist/Class-Variable>
 
@@ -207,6 +201,10 @@ This module is published under the terms of the MIT license, which basically mea
 =item * See also: L<Class::Property>, L<Class::Accessor::Lazy>. 
 
 =back
+
+=head1 LICENSE
+
+This module is published under the terms of the MIT license, which basically means "Do with it whatever you want". For more information, see the LICENSE file that should be enclosed with this distributions. A copy of the license is (at the time of writing) also available at L<http://www.opensource.org/licenses/mit-license.php>.
 
 =head1 AUTHOR
 
