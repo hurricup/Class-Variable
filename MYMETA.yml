@@ -28,4 +28,4 @@ resources:
   bugtracker: https://github.com/hurricup/Class-Variable/issues
   license: http://www.opensource.org/licenses/mit-license.php
   repository: git://github.com/hurricup/Class-Variable.git
-version: '1.000'
+version: '1.001'
