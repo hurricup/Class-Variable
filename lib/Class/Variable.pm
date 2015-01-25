@@ -89,9 +89,9 @@ sub get_protected_variable($$)
         
         croak sprintf(
             "Access violation: protected variable %s of %s available only to class or subclasses, but not %s."
-            , ($name // 'undef')
-            , ($package // 'undef')
-            , (caller()  // 'undef') ) if not caller()->isa($package);
+            , $name || 'undefined'
+            , $package || 'undefined'
+            , caller()  || 'undefined' ) if not caller()->isa($package);
             
         $NS->{$self}->{$name};
     };
@@ -117,9 +117,9 @@ sub get_private_variable($$)
         
         croak sprintf(
             "Access violation: private variable %s of %s available only to class itself, not %s."
-            , ($name // 'undef')
-            , ($package // 'undef')
-            , (caller()  // 'undef') ) if caller() ne $package;
+            , $name || 'undefined'
+            , $package || 'undefined'
+            , caller()  || 'undefined' ) if caller() ne $package;
             
         $NS->{$self}->{$name};
     };
