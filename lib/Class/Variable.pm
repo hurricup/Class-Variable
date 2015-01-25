@@ -11,6 +11,42 @@ our @EXPORT;
 
 my $NS = {};
 
+push @EXPORT, 'public';
+sub public($;)
+{
+    my @names = @_;
+    my $package = (caller)[0];
+    foreach my $name (@names)
+    {
+        no strict 'refs';
+        *{$package.'::'.$name } = get_public_variable($package, $name);
+    }
+}
+
+push @EXPORT, 'protected';
+sub protected($;)
+{
+    my @names = @_;
+    my $package = (caller)[0];
+    foreach my $name (@names)
+    {
+        no strict 'refs';
+        *{$package.'::'.$name } = get_protected_variable($package, $name);
+    }
+}
+
+push @EXPORT, 'private';
+sub private($;)
+{
+    my @names = @_;
+    my $package = (caller)[0];
+    foreach my $name (@names)
+    {
+        no strict 'refs';
+        *{$package.'::'.$name } = get_private_variable($package, $name);
+    }
+}
+
 sub get_public_variable($$)
 {
     my( $package, $name ) = @_;
@@ -53,9 +89,9 @@ sub get_protected_variable($$)
         
         croak sprintf(
             "Access violation: protected variable %s of %s available only to class or subclasses, but not %s."
-            , $name // 'undef'
-            , $package // 'undef'
-            , caller()  // 'undef' ) if not caller()->isa($package);
+            , ($name // 'undef')
+            , ($package // 'undef')
+            , (caller()  // 'undef') ) if not caller()->isa($package);
             
         $NS->{$self}->{$name};
     };
@@ -81,48 +117,12 @@ sub get_private_variable($$)
         
         croak sprintf(
             "Access violation: private variable %s of %s available only to class itself, not %s."
-            , $name // 'undef'
-            , $package // 'undef'
-            , caller()  // 'undef' ) if caller() ne $package;
+            , ($name // 'undef')
+            , ($package // 'undef')
+            , (caller()  // 'undef') ) if caller() ne $package;
             
         $NS->{$self}->{$name};
     };
-}
-
-push @EXPORT, 'public';
-sub public($;)
-{
-    my @names = @_;
-    my $package = (caller)[0];
-    foreach my $name (@names)
-    {
-        no strict 'refs';
-        *{$package.'::'.$name } = get_public_variable($package, $name);
-    }
-}
-
-push @EXPORT, 'protected';
-sub protected($;)
-{
-    my @names = @_;
-    my $package = (caller)[0];
-    foreach my $name (@names)
-    {
-        no strict 'refs';
-        *{$package.'::'.$name } = get_protected_variable($package, $name);
-    }
-}
-
-push @EXPORT, 'private';
-sub private($;)
-{
-    my @names = @_;
-    my $package = (caller)[0];
-    foreach my $name (@names)
-    {
-        no strict 'refs';
-        *{$package.'::'.$name } = get_private_variable($package, $name);
-    }
 }
 
 
