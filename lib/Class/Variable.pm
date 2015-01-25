@@ -5,7 +5,7 @@ use 5.008;
 use Carp;
 use Scalar::Util 'weaken';
 
-our $VERSION = '1.000'; # <== update version in pod
+our $VERSION = '1.001'; # <== update version in pod
 
 our @EXPORT;
 
@@ -133,7 +133,7 @@ Class::Variable - Perl implementation of class variables with access restriction
 
 =head1 VERSION
 
-Version 1.000
+Version 1.001
 
 =head1 SYNOPSIS
 
@@ -197,6 +197,12 @@ This module is published under the terms of the MIT license, which basically mea
 
 =item * Main project repository and bugtracker: L<https://github.com/hurricup/Class-Variable>
 
+=item * Testing results: L<http://www.cpantesters.org/distro/C/Class-Variable.html>
+        
+=item * AnnoCPAN, Annotated CPAN documentation: L<http://annocpan.org/dist/Class-Variable>
+
+=item * CPAN Ratings: L<http://cpanratings.perl.org/d/Class-Variable>
+
 =item * See also: L<Class::Property>, L<Class::Accessor::Lazy>. 
 
 =back
@@ -204,7 +210,5 @@ This module is published under the terms of the MIT license, which basically mea
 =head1 AUTHOR
 
 Copyright (C) 2015 by Alexandr Evstigneev (L<hurricup@evstigneev.com|mailto:hurricup@evstigneev.com>)
-
-
 
 =cut
