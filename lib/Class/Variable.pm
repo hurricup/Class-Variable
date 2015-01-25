@@ -5,7 +5,7 @@ use 5.008;
 use Carp;
 use Scalar::Util 'weaken';
 
-our $VERSION = '1.001'; # <== update version in pod
+our $VERSION = '1.002'; # <== update version in pod
 
 our @EXPORT;
 
@@ -89,9 +89,9 @@ sub get_protected_variable($$)
         
         croak sprintf(
             "Access violation: protected variable %s of %s available only to class or subclasses, but not %s."
-            , $name
-            , $package
-            , caller ) if not caller->isa($package);
+            , $name // 'undef'
+            , $package // 'undef'
+            , caller()  // 'undef' ) if not caller->isa($package);
             
         $NS->{$self}->{$name};
     };
@@ -117,9 +117,9 @@ sub get_private_variable($$)
         
         croak sprintf(
             "Access violation: private variable %s of %s available only to class itself, not %s."
-            , $name
-            , $package
-            , caller ) if caller ne $package;
+            , $name // 'undef'
+            , $package // 'undef'
+            , caller()  // 'undef' ) if caller ne $package;
             
         $NS->{$self}->{$name};
     };
@@ -133,7 +133,7 @@ Class::Variable - Perl implementation of class variables with access restriction
 
 =head1 VERSION
 
-Version 1.001
+Version 1.002
 
 =head1 SYNOPSIS
 
