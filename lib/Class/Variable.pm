@@ -1,6 +1,6 @@
 package Class::Variable;
 use strict; use warnings FATAL => 'all'; 
-use parent 'Exporter';
+use Exporter 'import';
 use 5.008;
 use Carp;
 use Scalar::Util 'weaken';
@@ -91,7 +91,7 @@ sub get_protected_variable($$)
             "Access violation: protected variable %s of %s available only to class or subclasses, but not %s."
             , $name // 'undef'
             , $package // 'undef'
-            , caller()  // 'undef' ) if not caller->isa($package);
+            , caller()  // 'undef' ) if not caller()->isa($package);
             
         $NS->{$self}->{$name};
     };
@@ -119,7 +119,7 @@ sub get_private_variable($$)
             "Access violation: private variable %s of %s available only to class itself, not %s."
             , $name // 'undef'
             , $package // 'undef'
-            , caller()  // 'undef' ) if caller ne $package;
+            , caller()  // 'undef' ) if caller() ne $package;
             
         $NS->{$self}->{$name};
     };
