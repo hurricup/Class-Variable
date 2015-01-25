@@ -1,7 +1,7 @@
 package Class::Variable;
+use 5.008;
 use strict; use warnings FATAL => 'all'; 
 use Exporter 'import';
-use 5.008;
 use Carp;
 use Scalar::Util 'weaken';
 
@@ -10,42 +10,6 @@ our $VERSION = '1.002'; # <== update version in pod
 our @EXPORT;
 
 my $NS = {};
-
-push @EXPORT, 'public';
-sub public
-{
-    my @names = @_;
-    my $package = (caller)[0];
-    foreach my $name (@names)
-    {
-        no strict 'refs';
-        *{$package.'::'.$name } = get_public_variable($package, $name);
-    }
-}
-
-push @EXPORT, 'protected';
-sub protected
-{
-    my @names = @_;
-    my $package = (caller)[0];
-    foreach my $name (@names)
-    {
-        no strict 'refs';
-        *{$package.'::'.$name } = get_protected_variable($package, $name);
-    }
-}
-
-push @EXPORT, 'private';
-sub private
-{
-    my @names = @_;
-    my $package = (caller)[0];
-    foreach my $name (@names)
-    {
-        no strict 'refs';
-        *{$package.'::'.$name } = get_private_variable($package, $name);
-    }
-}
 
 sub get_public_variable($$)
 {
@@ -124,6 +88,43 @@ sub get_private_variable($$)
         $NS->{$self}->{$name};
     };
 }
+
+push @EXPORT, 'public';
+sub public($;)
+{
+    my @names = @_;
+    my $package = (caller)[0];
+    foreach my $name (@names)
+    {
+        no strict 'refs';
+        *{$package.'::'.$name } = get_public_variable($package, $name);
+    }
+}
+
+push @EXPORT, 'protected';
+sub protected($;)
+{
+    my @names = @_;
+    my $package = (caller)[0];
+    foreach my $name (@names)
+    {
+        no strict 'refs';
+        *{$package.'::'.$name } = get_protected_variable($package, $name);
+    }
+}
+
+push @EXPORT, 'private';
+sub private($;)
+{
+    my @names = @_;
+    my $package = (caller)[0];
+    foreach my $name (@names)
+    {
+        no strict 'refs';
+        *{$package.'::'.$name } = get_private_variable($package, $name);
+    }
+}
+
 
 1;
 __END__

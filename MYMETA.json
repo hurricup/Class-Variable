@@ -4,7 +4,7 @@
       "Alexandr Evstigneev <hurricup@evstigneev.com>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "ExtUtils::MakeMaker version 6.98, CPAN::Meta::Converter version 2.142060",
+   "generated_by" : "ExtUtils::MakeMaker version 7.04, CPAN::Meta::Converter version 2.142060",
    "license" : [
       "mit"
    ],
@@ -55,5 +55,5 @@
          "web" : "https://github.com/hurricup/Class-Variable"
       }
    },
-   "version" : "1.001"
+   "version" : "1.002"
 }
